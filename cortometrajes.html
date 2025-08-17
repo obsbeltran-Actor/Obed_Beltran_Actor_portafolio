@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cortometrajes – Obed Bel</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="description" content="Cortometrajes y trabajos en cámara de Obed Bel. Explora todos los videos en un grid elegante y responsivo.">
+    <meta property="og:title" content="Cortometrajes – Obed Bel">
+    <meta property="og:description" content="Explora la selección de cortometrajes y trabajos en cámara de Obed Bel.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/_DSC3591.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Estilos locales mínimos para el header y la grilla -->
+    <style>
+      /* Encabezado de página (compacto y cinematográfico) */
+      #page-hero{
+        /* más alto para mostrar más imagen */
+        padding:140px 0 64px;
+
+        /* mismo overlay pero con foco en la parte superior para evitar recorte “agresivo” */
+        background:
+          linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.75)),
+          url('assets/_DSC3591.jpg') top center / cover no-repeat;
+
+        border-bottom:1px solid rgba(255,255,255,.06);
+      }
+      /* En pantallas muy anchas se recorta menos aún */
+      @media (min-width:1200px){
+        #page-hero{
+          background-position: 50% 15%; /* sube el encuadre un poco */
+          padding:160px 0 72px;
+        }
+      }
+      /* En móviles, un poco menos alto para mantener ritmo y foco */
+      @media (max-width:680px){
+        #page-hero{
+          background-position: top center;
+          padding:120px 0 48px;
+        }
+      }
+
+      #page-hero .title{
+        font-size:2.2rem; text-transform:uppercase; letter-spacing:2px; margin:0 0 .35rem;
+      }
+      #page-hero p{ margin:.25rem 0 0; opacity:.92; }
+
+      /* Grilla de cortos */
+      #shorts{ background:#0d0d0d; }
+      .shorts-grid{
+        display:grid; gap:20px;
+        grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+        margin-top:18px;
+      }
+      .short-card{
+        background:#151515; border:1px solid rgba(255,255,255,.06);
+        border-radius:14px; padding:14px; box-shadow:0 6px 18px rgba(0,0,0,.25);
+        transition:transform .15s ease, box-shadow .25s ease, border-color .25s ease;
+      }
+      .short-card:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.35); border-color:rgba(255,255,255,.18); }
+      .short-card .frame{
+        position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;
+        box-shadow:0 4px 20px rgba(0,0,0,.6);
+      }
+      .short-card iframe{
+        position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+      }
+      .short-card h3{
+        font-size:1rem; margin:.65rem 4px 0; font-weight:600; color:#fff;
+      }
+      .short-card p{ margin:.25rem 4px 2px; opacity:.85; font-size:.95rem; }
+    </style>
+  </head>
+  <body>
+    <!-- NAV principal (mismo de tu sitio) -->
+    <nav id="navbar">
+      <div class="container nav-container">
+        <!-- En esta página, “Obed Bel” te regresa al home -->
+        <a href="index.html#hero" class="logo">Obed&nbsp;Bel</a>
+        <ul class="menu">
+          <li><a href="index.html#about">Sobre mí</a></li>
+          <li><a href="index.html#reel">Demo&nbsp;Reel</a></li>
+          <li><a href="index.html#presentations">Presentaciones</a></li>
+          <li><a href="#shorts">Cortometrajes</a></li>
+          <li><a href="index.html#gallery">Galería</a></li>
+          <li><a href="index.html#resume">Currículum</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Encabezado de la página de cortos -->
+    <header id="page-hero">
+      <div class="container">
+        <h1 class="title">Cortometrajes</h1>
+        <p>Selección completa de mis trabajos. Reproducción directa desde YouTube.</p>
+      </div>
+    </header>
+
+    <!-- GRID de cortometrajes -->
+    <section id="shorts">
+      <div class="container">
+        <div class="shorts-grid">
+          <!-- 1) RUN -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/i2ADUrUa6c4?si=1rZxW6qo_knK8huZ"
+                title="Run – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Run</h3>
+          </article>
+
+          <!-- 2) Psychopathic killer -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/HBG1HuP7V2Y?si=Budp_6IaIHwEW1kI"
+                title="Psychopathic Killer – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Psychopathic Killer</h3>
+          </article>
+
+          <!-- 3) Feeling -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/KyYtKmqKieU?si=MjbmFZr6eDcvnGyy&amp;start=1"
+                title="Feeling – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Feeling</h3>
+          </article>
+
+          <!-- 4) Avengers -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/v6i0qwF7eSQ?si=rZH1OPEc4i_jZpvx"
+                title="Avengers – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Avengers</h3>
+          </article>
+
+          <!-- 5) 007 Multiverse -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/sRx1tOrgsoA?si=atEf2My7DqazSWov"
+                title="007 Multiverse – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>007 Multiverse</h3>
+          </article>
+
+          <!-- 6) Fatal Strike -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/DSJ8eoKk35w?si=UJszVZhxxL4zYWy4&amp;start=1"
+                title="Fatal Strike – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Fatal Strike</h3>
+          </article>
+
+          <!-- 7) Troubles -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/MSThutR-j9U?si=nCcRP9qw60jcV6cT&amp;start=1"
+                title="Troubles – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Troubles</h3>
+          </article>
+
+          <!-- 8) Anger -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/YwMymPoHXGU?si=dYba8VYTMXImiYiU"
+                title="Anger – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Anger</h3>
+          </article>
+
+          <!-- 9) Fear -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/T-2InJ4p7mM?si=k41GHdUlapYM5Lyj"
+                title="Fear – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Fear</h3>
+          </article>
+
+          <!-- 10) The Sound -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/baKkqERmJgM?si=iYneEnvR8BTekwNO"
+                title="The Sound – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>The Sound</h3>
+          </article>
+
+          <!-- 11) Realidad (embed corregido) -->
+          <article class="short-card">
+            <div class="frame">
+              <iframe src="https://www.youtube.com/embed/JwADIY_7m7c?si=FUsawQIYKPtBf4ZC"
+                title="Realidad – Obed Bel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Realidad</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto (idéntico al de tu home) -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p>Estoy disponible para proyectos de actuación, dirección y colaboración artística.</p>
+        <p>Teléfono:  /
+          <a href="tel:+527551271859">755-127-18-59</a>
+          <a href="https://wa.me/5217551271859" target="_blank">
+            <video autoplay loop muted playsinline class="btn-whatsapp">
+              <source src="assets/icons/button.mp4" type="video/mp4">
+            </video>
+          </a>
+          <a href="tel:+525638975651">563-897-56-51</a>
+        </p>
+        <p>Email: <a href="mailto:obs.beltran.san@gmail.com">obs.beltran.san@gmail.com</a></p>
+        <p>Ubicación: Ixtapa-Zihuatanejo, Guerrero, México</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Obed Bel – Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- Botón flotante + menú lateral (con Inicio que vuelve al home) -->
+    <div id="fabMenu" class="menu-fab">☰</div>
+    <nav class="side-nav" id="sideNav" aria-hidden="true">
+      <a href="index.html#hero">Inicio</a>
+      <a href="#shorts">Cortometrajes</a>
+      <a href="index.html#gallery">Galería</a>
+      <a href="index.html#reel">Demo Reel</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+
+    <!-- Scripts -->
+    <script>
+      // Smooth scroll para anclas de esta página
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',e=>{
+          const href=a.getAttribute('href');
+          if(href.startsWith('#')){
+            e.preventDefault();
+            const t=document.querySelector(href);
+            if(t){ window.scrollTo({ top:t.offsetTop-60, behavior:'smooth' }); }
+          }
+        });
+      });
+
+      // FAB + Side menu (igual a tu home)
+      (function(){
+        const fab=document.getElementById('fabMenu');
+        const nav=document.getElementById('sideNav');
+        function toggle(force){
+          const open = typeof force==='boolean'?force:!nav.classList.contains('show');
+          nav.classList.toggle('show', open);
+          nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        fab.addEventListener('click',()=>toggle());
+        nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+        document.addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
+        document.addEventListener('click',e=>{
+          if(nav.classList.contains('show') && !nav.contains(e.target) && e.target!==fab){
+            toggle(false);
+          }
+        }, true);
+      })();
+    </script>
+  </body>
+</html>

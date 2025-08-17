@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Galería Completa – Obed Bel</title>
+
+    <!-- Estilos globales del sitio -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      :root{
+        --bg:#0d0d0d;            /* igual al sitio */
+        --card:#151617;
+        --text:#f5f5f5;
+        --muted:#bdbec2;
+        --radius:16px;
+        --elev:0 10px 30px rgba(0,0,0,.35);
+        --elev-soft:0 6px 18px rgba(0,0,0,.25);
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0; background:var(--bg); color:var(--text);
+        font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      }
+
+      /* ====== NAV (mismo look & feel del sitio) ====== */
+      #navbar{
+        position:fixed; top:0; width:100%;
+        background:rgba(13,13,13,.85); backdrop-filter:blur(8px);
+        z-index:1000; border-bottom:1px solid rgba(255,255,255,.06);
+      }
+      #navbar .nav-container{
+        max-width:1000px; width:90%; margin:0 auto;
+        display:flex; align-items:center; justify-content:space-between; padding:.8rem 0;
+      }
+      #navbar .logo{
+        font-size:1.5rem; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:2px; text-decoration:none;
+      }
+      #navbar .menu{ list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
+      #navbar .menu a{ color:#fff; text-decoration:none; text-transform:uppercase; font-size:.9rem; letter-spacing:1px; }
+      #navbar .menu a:hover{ color:#d7263d; }
+      @media (max-width:768px){ #navbar .menu{ display:none; } }
+
+      /* ===== Encabezado de página ===== */
+      header.page-head{
+        padding:120px 0 28px;        /* deja espacio para el nav */
+        background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7));
+      }
+      header .inner{ max-width:1000px; width:90%; margin:0 auto; }
+      h1{
+        margin:0 0 6px; letter-spacing:.06em; font-weight:800;
+        font-size:clamp(22px,4.4vw,34px); text-transform:uppercase;
+      }
+      p.sub{margin:0; color:var(--muted)}
+
+      main.wrap{max-width:1000px; width:90%; margin:16px auto 80px;}
+
+      /* ===== Masonry con CSS Grid (sin recortes, sin huecos) ===== */
+      .gallery{
+        display:grid;
+        gap:14px;
+        grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+        grid-auto-rows:10px; /* “unidad” de altura para calcular spans */
+      }
+      @media (max-width:900px){
+        .gallery{ grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); }
+      }
+      @media (max-width:600px){
+        .gallery{ grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); }
+      }
+
+      .photo{
+        position:relative;
+        background:var(--card);
+        border-radius:var(--radius);
+        padding:6px;                 /* marco interior */
+        box-shadow:0 1px 0 rgba(255,255,255,.04) inset, var(--elev-soft);
+        transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        overflow:hidden; border:1px solid rgba(255,255,255,.06);
+      }
+      .photo:hover{ transform:translateY(-2px); box-shadow:var(--elev); border-color:rgba(255,255,255,.18); }
+
+      .photo img{
+        width:100% !important;
+        height:auto !important;      /* respeta proporción natural */
+        object-fit:contain !important;
+        display:block;
+        border-radius:12px;
+      }
+
+      /* ===== Lightbox ===== */
+      .lightbox{
+        position:fixed; inset:0; background:rgba(0,0,0,.85);
+        display:flex; align-items:center; justify-content:center;
+        opacity:0; visibility:hidden; transition:opacity .25s ease;
+        padding:20px; z-index:9999;
+      }
+      .lightbox.show{ opacity:1; visibility:visible }
+      .lightbox img{
+        max-width:min(96vw,1400px); max-height:90vh;
+        border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.6);
+      }
+      .lightbox .close{
+        position:absolute; top:14px; right:16px;
+        background:#00000066; color:#fff; border:1px solid #ffffff33;
+        border-radius:10px; padding:8px 12px; cursor:pointer; font-weight:700;
+      }
+
+      /* ===== FAB + menú lateral (igual al home) ===== */
+      .menu-fab{
+        position:fixed; right:18px; bottom:18px; width:56px; height:56px; border-radius:999px;
+        display:flex; align-items:center; justify-content:center;
+        background:#111; color:#fff; font-size:26px; line-height:1;
+        box-shadow:0 12px 24px rgba(0,0,0,.35); cursor:pointer;
+        z-index:2147483647; transition:transform .15s ease, background .2s ease;
+      }
+      .menu-fab:hover{ transform:translateY(-2px); background:#1c1c1c; }
+      .side-nav{
+        position:fixed; top:0; right:-260px; height:100vh; width:260px;
+        background:rgba(12,12,12,.96);
+        box-shadow:-10px 0 24px rgba(0,0,0,.45);
+        display:flex; flex-direction:column; padding:80px 16px 20px; gap:8px;
+        transition:right .25s ease; z-index:2147483646;
+      }
+      .side-nav.show{ right:0; }
+      .side-nav a{
+        color:#fff; text-decoration:none; padding:12px 14px; border-radius:10px;
+        background:#18191a; border:1px solid #262728; font-weight:600;
+        transition:transform .15s ease, background .25s ease, border-color .25s ease;
+      }
+      .side-nav a:hover{ background:#202122; transform:translateX(-1px); border-color:#3a3b3c; }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV principal -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="index.html#hero" class="logo">Obed&nbsp;Bel</a>
+        <ul class="menu">
+          <li><a href="index.html#about">Sobre mí</a></li>
+          <li><a href="index.html#reel">Demo&nbsp;Reel</a></li>
+          <li><a href="index.html#presentations">Presentaciones</a></li>
+          <!-- FIX: ruta correcta a la página de cortometrajes -->
+          <li><a href="cortometrajes.html#shorts">Cortometrajes</a></li>
+          <li><a href="index.html#gallery">Galería</a></li>
+          <li><a href="index.html#resume">Currículum</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="page-head">
+      <div class="inner">
+        <h1>Galería Completa</h1>
+        <p class="sub">Haz clic en cualquier imagen para verla en grande</p>
+      </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="wrap">
+      <div class="gallery" id="galeria">
+        <!-- ====== LISTA DE FOTOS (assets/PHOTOS_Obed_Bel/) ====== -->
+        <!-- Serie DSC / retratos -->
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/_DSC3591.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/_DSC3591.jpg" alt="_DSC3591"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/_DSC4161.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/_DSC4161.jpg" alt="_DSC4161"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/_DSC4361.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/_DSC4361.jpg" alt="_DSC4361"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/_DSC4373.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/_DSC4373.jpg" alt="_DSC4373"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/_DSC4381.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/_DSC4381.jpg" alt="_DSC4381"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/_DSC4399%20(1).jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/_DSC4399%20(1).jpg" alt="_DSC4399 (1)"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC00634%20(1).jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC00634%20(1).jpg" alt="DSC00634 (1)"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC02257.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC02257.jpg" alt="DSC02257"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC02932.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC02932.jpg" alt="DSC02932"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC02977.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC02977.jpg" alt="DSC02977"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC03190%20(1).jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC03190%20(1).jpg" alt="DSC03190 (1)"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC03235.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC03235.jpg" alt="DSC03235"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC04565%20(1).jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC04565%20(1).jpg" alt="DSC04565 (1)"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/DSC04571.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/DSC04571.jpg" alt="DSC04571"></a>
+
+        <!-- Serie IMG_ fechas -->
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_1456.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_1456.jpg" alt="IMG_1456"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20240918_194727.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20240918_194727.jpg" alt="IMG_20240918_194727"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20241009_204619.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20241009_204619.jpg" alt="IMG_20241009_204619"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20241018_000257.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20241018_000257.jpg" alt="IMG_20241018_000257"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG20241104151346.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG20241104151346.jpg" alt="IMG20241104151346"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250212_171411_804.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250212_171411_804.jpg" alt="IMG_20250212_171411_804"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250212_210826_894.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250212_210826_894.jpg" alt="IMG_20250212_210826_894"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250213_132051_275.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250213_132051_275.jpg" alt="IMG_20250213_132051_275"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250213_132051_408.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250213_132051_408.jpg" alt="IMG_20250213_132051_408"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250213_132051_673.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250213_132051_673.jpg" alt="IMG_20250213_132051_673"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250218_004514_599.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250218_004514_599.jpg" alt="IMG_20250218_004514_599"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250218_004514_659.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250218_004514_659.jpg" alt="IMG_20250218_004514_659"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250418_114704.png"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250418_114704.png" alt="IMG_20250418_114704"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG_20250514_183256.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG_20250514_183256.jpg" alt="IMG_20250514_183256"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG-20241017-WA0021.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG-20241017-WA0021.jpg" alt="IMG-20241017-WA0021"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/IMG-20241018-WA0009.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/IMG-20241018-WA0009.jpg" alt="IMG-20241018-WA0009"></a>
+
+        <!-- PSX / SmartBG / otras -->
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20241208_230929.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20241208_230929.jpg" alt="PSX_20241208_230929"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20241227_131646.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20241227_131646.jpg" alt="PSX_20241227_131646"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20250114_235607.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20250114_235607.jpg" alt="PSX_20250114_235607"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20250119_223312.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20250119_223312.jpg" alt="PSX_20250119_223312"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20250120_135736.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20250120_135736.jpg" alt="PSX_20250120_135736"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20250123_191159.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20250123_191159.jpg" alt="PSX_20250123_191159"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/PSX_20250202_032904.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/PSX_20250202_032904.jpg" alt="PSX_20250202_032904"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/SmartBG_2025-03-09_474b58b6-e2a4-4df0-b5a4-181899b200e2.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/SmartBG_2025-03-09_474b58b6-e2a4-4df0-b5a4-181899b200e2.jpg" alt="SmartBG_2025-03-09..."></a>
+
+        <!-- Otros ficheros sueltos dentro de /assets -->
+        <a class="photo" href="assets/1.1.png"><img loading="lazy" src="assets/1.1.png" alt="1.1.png"></a>
+
+        <!-- Tropifashion -->
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/Tropifashion-104915.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/Tropifashion-104915.jpg" alt="Tropifashion-104915"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/Tropifashion-104917.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/Tropifashion-104917.jpg" alt="Tropifashion-104917"></a>
+
+        <!-- Retratos sueltos -->
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/ObedBeltran3.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/ObedBeltran3.jpg" alt="ObedBeltran3"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/ObedBeltran4.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/ObedBeltran4.jpg" alt="ObedBeltran4"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/loquequeda2-01.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/loquequeda2-01.jpg" alt="loquequeda2-01"></a>
+
+        <!-- Pares con timestamp largos -->
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/20250608201213_DSC03196.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/20250608201213_DSC03196.jpg" alt="20250608201213_DSC03196"></a>
+        <a class="photo" href="assets/PHOTOS_Obed_Bel/20250608202311_DSC03199.jpg"><img loading="lazy" src="assets/PHOTOS_Obed_Bel/20250608202311_DSC03199.jpg" alt="20250608202311_DSC03199"></a>
+      </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="close" aria-label="Cerrar">Cerrar ✕</button>
+      <img alt="Vista ampliada">
+    </div>
+
+    <!-- ===== Contacto (igual al home) ===== -->
+    <section id="contact">
+      <div class="container" style="max-width:1000px; width:90%; margin:0 auto; padding:60px 0;">
+        <h2>Contacto</h2>
+        <p>Estoy disponible para proyectos de actuación, dirección y colaboración artística.</p>
+        <p>Teléfono:  /
+          <a href="tel:+527551271859">755-127-18-59</a>
+          <a href="https://wa.me/5217551271859" target="_blank">
+            <video autoplay loop muted playsinline class="btn-whatsapp" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
+              <source src="assets/icons/button.mp4" type="video/mp4">
+            </video>
+          </a>
+          <a href="tel:+525638975651">563-897-56-51</a>
+        </p>
+        <p>Email: <a href="mailto:obs.beltran.san@gmail.com">obs.beltran.san@gmail.com</a></p>
+        <p>Ubicación: Ixtapa-Zihuatanejo, Guerrero, México</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="max-width:1000px; width:90%; margin:0 auto;">
+        <p>&copy; 2025 Obed Bel – Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- Botón flotante + menú lateral -->
+    <div id="fabMenu" class="menu-fab" aria-label="Abrir menú">☰</div>
+    <nav class="side-nav" id="sideNav" aria-hidden="true">
+      <a href="index.html#hero">Inicio</a>
+      <a href="index.html#about">Sobre mí</a>
+      <a href="index.html#reel">Demo Reel</a>
+      <!-- FIX: ruta correcta a la página de cortometrajes -->
+      <a href="cortometrajes.html#shorts">Cortometrajes</a>
+      <a href="index.html#gallery">Galería</a>
+      <a href="index.html#resume">Currículum</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+
+    <!-- JS: lightbox + Masonry Grid + FAB -->
+    <script>
+      /* LIGHTBOX */
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+      document.querySelectorAll('.photo').forEach(a=>{
+        a.addEventListener('click', e=>{
+          e.preventDefault();
+          lbImg.src = a.getAttribute('href');
+          lb.classList.add('show');
+          lb.setAttribute('aria-hidden','false');
+        });
+      });
+      lb.addEventListener('click', e=>{
+        if(e.target === lb || e.target.classList.contains('close')){
+          lb.classList.remove('show');
+          lb.setAttribute('aria-hidden','true');
+          lbImg.removeAttribute('src');
+        }
+      });
+      document.addEventListener('keydown', e=>{
+        if(e.key === 'Escape'){
+          lb.classList.remove('show');
+          lb.setAttribute('aria-hidden','true');
+          lbImg.removeAttribute('src');
+        }
+      });
+
+      /* MASONRY con Grid: calcula el span de filas según la altura real */
+      const grid = document.getElementById('galeria');
+
+      function resizeMasonryItem(item){
+        const gridStyle = getComputedStyle(grid);
+        const rowH = parseInt(gridStyle.getPropertyValue('grid-auto-rows'), 10);
+        const gap  = parseInt(gridStyle.getPropertyValue('gap'), 10);
+        const img  = item.querySelector('img');
+        const pTop = parseInt(getComputedStyle(item).paddingTop,10) || 0;
+        const pBot = parseInt(getComputedStyle(item).paddingBottom,10) || 0;
+        const full = img.getBoundingClientRect().height + pTop + pBot;
+        const span = Math.ceil((full + gap) / (rowH + gap));
+        item.style.gridRowEnd = `span ${span}`;
+      }
+      function resizeAll(){
+        document.querySelectorAll('#galeria .photo').forEach(resizeMasonryItem);
+      }
+      window.addEventListener('load', resizeAll);
+      window.addEventListener('resize', resizeAll);
+      document.querySelectorAll('#galeria img').forEach(img=>{
+        if(img.complete){ resizeMasonryItem(img.closest('.photo')); }
+        else{ img.addEventListener('load', ()=>resizeMasonryItem(img.closest('.photo')), {once:true}); }
+      });
+
+      /* FAB + Side menu */
+      (function(){
+        const fab=document.getElementById('fabMenu');
+        const nav=document.getElementById('sideNav');
+        function toggle(force){
+          const open = typeof force==='boolean'?force:!nav.classList.contains('show');
+          nav.classList.toggle('show', open);
+          nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        fab.addEventListener('click',()=>toggle());
+        nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+        document.addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
+        document.addEventListener('click',e=>{
+          if(nav.classList.contains('show') && !nav.contains(e.target) && e.target!==fab){
+            toggle(false);
+          }
+        }, true);
+      })();
+    </script>
+  </body>
+</html>

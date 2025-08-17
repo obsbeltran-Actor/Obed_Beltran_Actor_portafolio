@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Obed Bel – Actor & Cineasta</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <!-- Metadatos pulidos -->
+        <meta name="description" content="Obed Bel – actor de intensidad dramática y acción. Combate escénico, artes marciales y dominio de set/cámara. Mira el reel y solicita un self-tape.">
+        <meta property="og:title" content="Obed Bel – Actor & Cineasta">
+        <meta property="og:description" content="Actor versátil con habilidades de acción y conocimiento de cámara/iluminación. Reel y presentaciones listos.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="assets/_DSC3591.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+        <!-- Ajustes locales: galería + lightbox + botón idioma -->
+        <style>/* Masonry sin recorte en HOME */#gallery .gallery-grid { column-count: 3; column-gap: 16px; } @media (max-width:900px){ #gallery .gallery-grid {  column-count: 2; } } @media (max-width:580px){ #gallery .gallery-grid {  column-count: 1; } } #gallery .gallery-grid img { width: 100% !important; height: auto !important; object-fit: contain !important; display: block; margin: 0 0 16px; border-radius: 14px; break-inside: avoid; background: #151617; cursor: zoom-in; transition: transform .2s ease, box-shadow .2s ease; } #gallery .gallery-grid img:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.35); } /* Lightbox local */.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity .25s ease; padding: 20px; z-index: 9999; } .lightbox.show { opacity: 1; visibility: visible; } .lightbox img { max-width: min(96vw,1400px); max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.6); } .lightbox .close { position: absolute; top: 14px; right: 16px; background: #00000066; color: #fff; border: 1px solid #ffffff33; border-radius: 10px; padding: 8px 12px; cursor: pointer; font-weight: 700; } /* Botón idioma: visible, discreto */.lang-toggle { position: fixed; top: 76px; right: 16px; z-index: 1200; background: rgba(20,20,20,.9); color: #fff; border: 1px solid rgba(255,255,255,.15); border-radius: 999px; padding: 6px 12px; font: 600 12px/1 Poppins,system-ui,sans-serif; letter-spacing: .3px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,.35); transition: transform .15s ease, background .2s ease, border-color .2s ease; } .lang-toggle:hover { transform: translateY(-1px); background: #1c1c1c; border-color: rgba(255,255,255,.25); } /* CTA Self-tape */.selftape-cta { margin-top: 20px; text-align: center; } .selftape-line { margin: .25rem 0 .75rem; opacity: .92; } /* Modal de elección */.choice-modal { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity .2s ease; z-index: 1100; } .choice-modal.show { opacity: 1; visibility: visible; } .choice-card { width: min(560px,92vw); background: #141414; color: #fff; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 18px; box-shadow: 0 18px 48px rgba(0,0,0,.45); } .choice-card h3 { margin: .2rem 0 .2rem; } .choice-sub { margin: 0 0 .6rem; opacity: .9; } .choice-actions { display: flex; gap: 10px; flex-wrap: wrap; } .btn-choice { display: inline-block; padding: .6rem 1rem; border-radius: 10px; font-weight: 600; text-decoration: none; background: #1f1f1f; color: #fff; border: 1px solid rgba(255,255,255,.18); transition: transform .15s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease; } .btn-choice:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(0,0,0,.35); background: #262626; border-color: rgba(255,255,255,.28); } .btn-choice.outline { background: transparent; border: 2px solid rgba(255,255,255,.35); } .btn-choice.outline:hover { background: rgba(255,255,255,.06); border-color: #fff; } .choice-close { margin-top: 10px; background: transparent; color: #bbb; border: 0; font-weight: 600; cursor: pointer; } .choice-close:hover { color: #fff; } /* Mini ajuste de tipografía en tarjetas destacadas */.h-card p { text-wrap: pretty; }</style>
+    </head>
+    <body>
+        <!-- Botón idioma -->
+        <button id="langToggle" class="lang-toggle" aria-label="Cambiar idioma">EN</button>
+        <nav id="navbar">
+            <div class="container nav-container">
+                <a href="#hero" class="logo" data-i18n="brand">Obed&nbsp;Bel</a>
+                <ul class="menu">
+                    <li>
+                        <a href="#about" data-i18n="nav_about">Sobre mí</a>
+                    </li>
+                    <li>
+                        <a href="#reel" data-i18n="nav_reel">Demo&nbsp;Reel</a>
+                    </li>
+                    <li>
+                        <a href="#presentations" data-i18n="nav_presentations">Presentaciones</a>
+                    </li>
+                    <li>
+                        <a href="#shortfilm" data-i18n="nav_shortfilm">Cortometraje</a>
+                    </li>
+                    <li>
+                        <a href="#gallery" data-i18n="nav_gallery">Galería</a>
+                    </li>
+                    <li>
+                        <a href="#resume" data-i18n="nav_resume">Currículum</a>
+                    </li>
+                    <li>
+                        <a href="#contact" data-i18n="nav_contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section id="hero">
+            <div class="overlay"></div>
+            <div class="content">
+                <h1 data-i18n="hero_name">Obed&nbsp;Bel</h1>
+                <p data-i18n="hero_line">Actor enfocado en entregar interpretaciones de alto nivel que potencien cualquier proyecto cinematográfico.</p>
+                <div class="buttons">
+                    <a href="#reel" class="button" data-i18n="cta_reel">Ver Demo&nbsp;Reel</a>
+                    <a href="#contact" class="button button-secondary" data-i18n="cta_contact">Contáctame</a>
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="container">
+                <h2 data-i18n="about_title">Sobre mí</h2>
+                <p data-i18n="about_p1">Soy un actor versátil en acción y drama con experiencia en artes marciales y entrenamiento físico para ejecutar escenas exigentes con realismo y seguridad. Con un enfoque intensivo y de caracterización integral, construyo cada papel desde su núcleo emocional hasta su expresión física, logrando interpretaciones auténticas incluso con material limitado. Mi conocimiento en dirección, cámara e iluminación me brinda una visión completa del proceso de producción, aportando creatividad, compromiso y resolución en cualquier set.</p>
+                <p class="highlight" data-i18n="about_p2">Más que un intérprete, soy un colaborador consciente de que cada proyecto necesita tanto calidad artística como viabilidad comercial. Mi compromiso es entregar actuaciones sólidas, disciplina y una actitud profesional que hacen de mi presencia un aporte real y rentable para cualquier producción.</p>
+            </div>
+        </section>
+        <!-- Highlights -->
+        <section id="highlights">
+            <div class="container highlights">
+                <article class="h-card">
+                    <div class="h-ico" aria-hidden="true">🥋</div>
+                    <h3 data-i18n="hi_skills_h">Habilidades</h3>
+                    <p data-i18n="hi_skills_p">Combate escénico (armado y desarmado), acrobacia segura para cámara, manejo de coreografías y timing; conducción básica y nado.</p>
+                </article>
+                <article class="h-card">
+                    <div class="h-ico" aria-hidden="true">🎥</div>
+                    <h3 data-i18n="hi_set_h">Set &amp; Cámara</h3>
+                    <p data-i18n="hi_set_p">Lenguaje cinematográfico aplicado: relación milimetraje–perspectiva, continuidad de eje y línea de acción; lectura de tono y ritmo del film; colaboración con dirección, foto e iluminación para preservar composición y luz.</p>
+                </article>
+                <article class="h-card">
+                    <div class="h-ico" aria-hidden="true">📍</div>
+                    <h3 data-i18n="hi_avail_h">Disponibilidad</h3>
+                    <p data-i18n="hi_avail_p">Ixtapa–Zihuatanejo. Viajes para proyectos confirmados o con alto potencial.</p>
+                </article>
+            </div>
+        </section>
+        <section id="reel">
+            <div class="container">
+                <h2 data-i18n="reel_title">Demo Reel&nbsp;2025</h2>
+                <p data-i18n="reel_desc">Disfruta de mi reel más reciente y conoce mi rango interpretativo.</p>
+                <div class="video-wrapper">
+                    <iframe></iframe>
+                    <div style="padding:42.55% 0 0 0;position:relative;">
+                        <iframe id="vimeoReel" src="https://player.vimeo.com/video/1110460554?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Obed_Bel_DemoReel.2025"></iframe>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
+                    </div>
+                </div>
+                <!-- CTA Self-tape debajo del reel -->
+                <div class="selftape-cta">
+                    <p class="selftape-line" data-i18n="st_line">¿Quieres ver cómo me convierto en <strong>tu</strong> personaje?</p>
+                    <button id="openSelfTape" class="button button-ghost" data-i18n="st_btn">Solicitar self-tape</button>
+                </div>
+            </div>
+        </section>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script>
+      (function(){
+        const iframe = document.getElementById('vimeoReel');
+        if(!iframe) return;
+        const player = new Vimeo.Player(iframe);
+        player.setVolume(1).then(()=>player.play()).catch(()=>{});
+        function enableSound(){
+          player.setVolume(1).then(()=>player.play());
+          document.removeEventListener('click', enableSound);
+          document.removeEventListener('touchstart', enableSound);
+          document.removeEventListener('keydown', enableSound);
+        }
+        document.addEventListener('click', enableSound, {once:true});
+        document.addEventListener('touchstart', enableSound, {once:true});
+        document.addEventListener('keydown', enableSound, {once:true});
+      })();
+    </script>
+        <section id="specs">
+            <div class="container">
+                <h2 data-i18n="specs_title">Especificaciones</h2>
+                <ul class="specs-grid">
+                    <li class="specs-card">
+                        <span class="k" data-i18n="specs_height_k">Altura</span>
+                        <span class="v" data-i18n="specs_height_v">172 cm</span>
+                    </li>
+                    <li class="specs-card">
+                        <span class="k" data-i18n="specs_weight_k">Peso</span>
+                        <span class="v" data-i18n="specs_weight_v">84 kg</span>
+                    </li>
+                    <li class="specs-card">
+                        <span class="k" data-i18n="specs_eyes_k">Color de ojos</span>
+                        <span class="v" data-i18n="specs_eyes_v">Café oscuro</span>
+                    </li>
+                    <li class="specs-card">
+                        <span class="k" data-i18n="specs_hair_k">Cabello</span>
+                        <span class="v" data-i18n="specs_hair_v">Castaño oscuro</span>
+                    </li>
+                    <li class="specs-card">
+                        <span class="k" data-i18n="specs_langs_k">Idiomas</span>
+                        <span class="v" data-i18n="specs_langs_v">Español (nativo), inglés avanzado</span>
+                    </li>
+                    <li class="specs-card">
+                        <span class="k" data-i18n="specs_skills_k">Habilidades</span>
+                        <span class="v" data-i18n="specs_skills_v">Artes marciales, acrobacias, dirección de cine</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="presentations">
+            <div class="container">
+                <h2 data-i18n="pres_title">Videos de presentación</h2>
+                <p data-i18n="pres_desc">Estos videos muestran mi presencia frente a cámara y habilidades expresivas.</p>
+                <div class="presentations-grid">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/JZKwwIdsgfM?rel=0" allow="encrypted-media" allowfullscreen></iframe>
+                        <h3 data-i18n="pres_hands">Hands &amp; Gestos</h3>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/70MmKu-o1co?rel=0" allow="encrypted-media" allowfullscreen></iframe>
+                        <h3 data-i18n="pres_intro">Presentación personal</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="shortfilm">
+            <div class="container">
+                <h2 data-i18n="short_title">Lo que queda (Cortometraje)</h2>
+                <p data-i18n="short_dir">Dirigido por Santiago Ambriz.</p>
+                <div class="video-wrapper">
+                    <iframe allow="encrypted-media" allowfullscreen src="https://www.youtube-nocookie.com/embed/YwPTshWhHm4?si=VXH4lQP8ulbJpJ7y&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen></iframe>"></iframe>
+                </div>
+                <div class="shorts-cta">
+                    <a class="btn-explore" href="cortometrajes.html" data-i18n="short_more">Explorar más cortometrajes</a>
+                </div>
+            </div>
+        </section>
+        <section id="gallery">
+            <div class="container">
+                <h2 data-i18n="gal_title">Galería</h2>
+                <p data-i18n="gal_desc">Algunas imágenes seleccionadas de mis trabajos y sesiones fotográficas.</p>
+                <div class="gallery-grid">
+                    <img src="assets/_DSC3591.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/DSC02977.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/DSC00634%20(1).jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/IMG_20241009_204619.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/_DSC4381.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/IMG_20250212_210826_894.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/SmartBG_2025-03-09_474b58b6-e2a4-4df0-b5a4-181899b200e2.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/IMG_20250218_004514_659.JPG" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/IMG_20241018_000257.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/PSX_20241208_230929.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/IMG_20241208_230531.jpg" alt="Retrato de Obed Bel">
+                    <img src="assets/PHOTOS_Obed_Bel/DSC04571.jpg" alt="Retrato de Obed Bel">
+                </div>
+                <a name="Ver mas fotos" href="todas-las-fots.html" class="btn-ver-mas" data-i18n="gal_more">Ver más fotos</a>
+            </div>
+        </section>
+        <!-- Se eliminó la sección de Especificaciones para evitar repetición -->
+        <section id="resume">
+            <div class="container">
+                <h2 data-i18n="cv_title">Currículum</h2>
+                <p data-i18n="cv_desc">Descarga mi CV completo para conocer mi formación y experiencia.</p>
+                <a class="download-cv" href="assets/Curriculum_Obed_Bel.pdf" download data-i18n="cv_btn">Descargar CV (PDF)</a>
+            </div>
+        </section>
+        <section id="social">
+            <div class="container">
+                <h2 data-i18n="social_title">Sígueme</h2>
+                <p data-i18n="social_desc">Conecta conmigo en mis redes sociales para ver más contenido y novedades.</p>
+                <div class="icons">
+                    <a href="https://youtube.com/@obedbel-k5q" target="_blank" title="YouTube"><img src="assets/icons/youtube.svg" alt="YouTube"></a>
+                    <a href="https://www.facebook.com/Obedbeltran99?mibextid=ZbWKwL" target="_blank" title="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/obed.bel?igsh=dWtkem5xaWVqamtx" target="_blank" title="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <h2 data-i18n="contact_title">Contacto</h2>
+                <p data-i18n="contact_desc">Estoy disponible para proyectos de actuación, dirección y colaboración artística.</p>
+                <p> <span data-i18n="contact_phone_label">Teléfono:</span>
+          &nbsp;/&nbsp; <a href="tel:+527551271859">755-127-18-59</a> <a href="https://wa.me/5217551271859" target="_blank"> <video autoplay loop muted playsinline class="btn-whatsapp">
+                            <source src="assets/icons/button.mp4" type="video/mp4">
+                        </video> </a> <a href="tel:+525638975651">563-897-56-51</a> </p>
+                <p><span data-i18n="contact_mail_label">Correo:</span> <a href="mailto:obs.beltran.san@gmail.com">obs.beltran.san@gmail.com</a></p>
+                <p data-i18n="contact_loc">Ubicación: Ixtapa-Zihuatanejo, Guerrero, México.</p>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Obed Bel – <span data-i18n="rights">Todos los derechos reservados.</span></p>
+            </div>
+        </footer>
+        <!-- Botón flotante y menú lateral -->
+        <div id="fabMenu" class="menu-fab">☰</div>
+        <nav class="side-nav" id="sideNav" aria-hidden="true">
+            <a href="#hero" data-i18n="nav_home">Inicio</a>
+            <a href="#about" data-i18n="nav_about">Sobre mí</a>
+            <a href="#reel" data-i18n="nav_reel">Demo Reel</a>
+            <a href="#presentations" data-i18n="nav_presentations">Presentaciones</a>
+            <a href="#shortfilm" data-i18n="nav_shortfilm">Cortometraje</a>
+            <a href="#gallery" data-i18n="nav_gallery">Galería</a>
+            <a href="#resume" data-i18n="nav_resume">Currículum</a>
+            <a href="#contact" data-i18n="nav_contact">Contacto</a>
+        </nav>
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+            <button class="close" aria-label="Cerrar">Cerrar ✕</button>
+            <img alt="Vista ampliada">
+        </div>
+        <!-- Modal Self-tape -->
+        <div class="choice-modal" id="selfTapeModal" aria-hidden="true" role="dialog" aria-labelledby="stmTitle">
+            <div class="choice-card">
+                <h3 id="stmTitle" data-i18n="st_title">Enviar solicitud de self-tape</h3>
+                <p class="choice-sub" data-i18n="st_sub">Elige el medio que prefieras:</p>
+                <div class="choice-actions">
+                    <a class="btn-choice" id="stEmail" href="mailto:obs.beltran.san@gmail.com?subject=Solicitud%20de%20self-tape%20%E2%80%93%20Obed%20Bel&body=Hola%20Obed%2C%20me%20gustar%C3%ADa%20solicitar%20un%20self-tape.%0ARol%3A%20%0AIndicaciones%3A%20%0AFecha%20l%C3%ADmite%3A%20%0AGracias." data-i18n="st_email">Correo electrónico</a>
+                    <a class="btn-choice outline" id="stWhats" href="https://wa.me/5217551271859?text=Hola%20Obed%2C%20%C2%BFpodemos%20coordinar%20un%20self-tape%3F%20Rol%3A%20%7C%20Indicaciones%3A%20%7C%20Fecha%20l%C3%ADmite%3A%20" data-i18n="st_whats">WhatsApp</a>
+                </div>
+                <button class="choice-close" id="closeSelfTape" data-i18n="st_cancel">Cancelar</button>
+            </div>
+        </div>
+        <script>
+      /* --------- Scroll suave anclas --------- */
+      document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+        anchor.addEventListener('click',function(e){
+          const href=this.getAttribute('href');
+          if(href.startsWith('#')){
+            e.preventDefault();
+            const target=document.querySelector(href);
+            if(target){window.scrollTo({top:target.offsetTop-60,behavior:'smooth'});}
+          }
+        });
+      });
+
+      /* --------- Lightbox galería --------- */
+      (function(){
+        const lb=document.getElementById('lightbox');
+        const lbImg=lb.querySelector('img');
+        document.querySelectorAll('#gallery .gallery-grid img').forEach(img=>{
+          img.setAttribute('loading','lazy');
+          img.addEventListener('error',()=>{ img.style.display='none'; });
+          img.addEventListener('click',()=>{
+            lbImg.src=img.currentSrc || img.src;
+            lb.classList.add('show');
+            lb.setAttribute('aria-hidden','false');
+          });
+        });
+        lb.addEventListener('click',e=>{
+          if(e.target===lb || e.target.classList.contains('close')){
+            lb.classList.remove('show');
+            lb.setAttribute('aria-hidden','true');
+            lbImg.removeAttribute('src');
+          }
+        });
+        document.addEventListener('keydown',e=>{
+          if(e.key==='Escape'){
+            lb.classList.remove('show');
+            lb.setAttribute('aria-hidden','true');
+            lbImg.removeAttribute('src');
+          }
+        });
+      })();
+
+      /* --------- FAB + Side menu --------- */
+      (function(){
+        const fab = document.getElementById('fabMenu');
+        const nav = document.getElementById('sideNav');
+        function toggle(force){
+          const open = typeof force==='boolean'?force:!nav.classList.contains('show');
+          nav.classList.toggle('show', open);
+          nav.setAttribute('aria-hidden', open ? 'false':'true');
+        }
+        fab.addEventListener('click',()=>toggle());
+        nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+        document.addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
+        document.addEventListener('click',e=>{
+          if(nav.classList.contains('show') && !nav.contains(e.target) && e.target!==fab){
+            toggle(false);
+          }
+        }, true);
+      })();
+
+      /* --------- Modal Self-tape --------- */
+      (function(){
+        const open = document.getElementById('openSelfTape');
+        const modal = document.getElementById('selfTapeModal');
+        const close = document.getElementById('closeSelfTape');
+        if(!open || !modal) return;
+        function show(){ modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
+        function hide(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }
+        open.addEventListener('click', show);
+        close.addEventListener('click', hide);
+        modal.addEventListener('click', (e)=>{ if(e.target===modal) hide(); });
+        document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
+      })();
+
+      /* --------- Conmutador de idioma (ES/EN) --------- */
+      (function(){
+        const t = {
+          es: {
+            brand:"Obed Bel",
+            nav_home:"Inicio", nav_about:"Sobre mí", nav_reel:"Demo Reel", nav_presentations:"Presentaciones",
+            nav_shortfilm:"Cortometraje", nav_gallery:"Galería", nav_resume:"Currículum", nav_contact:"Contacto",
+            hero_name:"Obed Bel",
+            hero_line:"Actor enfocado en entregar interpretaciones de alto nivel que potencien cualquier proyecto cinematográfico.",
+            cta_reel:"Ver Demo Reel", cta_contact:"Contáctame",
+            about_title:"Sobre mí",
+            about_p1:"Soy un actor versátil en acción y drama con experiencia en artes marciales y entrenamiento físico para ejecutar escenas exigentes con realismo y seguridad. Con un enfoque intensivo y de caracterización integral, construyo cada papel desde su núcleo emocional hasta su expresión física, logrando interpretaciones auténticas incluso con material limitado. Mi conocimiento en dirección, cámara e iluminación me brinda una visión completa del proceso de producción, aportando creatividad, compromiso y resolución en cualquier set.",
+            about_p2:"Más que un intérprete, soy un colaborador consciente de que cada proyecto necesita tanto calidad artística como viabilidad comercial. Mi compromiso es entregar actuaciones sólidas, disciplina y una actitud profesional que hacen de mi presencia un aporte real y rentable para cualquier producción.",
+            hi_skills_h:"Habilidades",
+            hi_skills_p:"Combate escénico (armado y desarmado), acrobacia segura para cámara, manejo de coreografías y timing; conducción básica y nado.",
+            hi_set_h:"Set & Cámara",
+            hi_set_p:"Lenguaje cinematográfico aplicado: relación milimetraje–perspectiva, continuidad de eje y línea de acción; lectura de tono y ritmo del film; colaboración con dirección, foto e iluminación para preservar composición y luz.",
+            hi_avail_h:"Disponibilidad",
+            hi_avail_p:"Ixtapa–Zihuatanejo. Viajes para proyectos confirmados o con alto potencial.",
+            reel_title:"Demo Reel 2025",
+            reel_desc:"Disfruta de mi reel más reciente y conoce mi rango interpretativo.",
+            st_line:"¿Quieres ver cómo me convierto en <strong>tu</strong> personaje?",
+            st_btn:"Solicitar self-tape",
+            pres_title:"Videos de presentación",
+            pres_desc:"Estos videos muestran mi presencia frente a cámara y habilidades expresivas.",
+            pres_hands:"Hands & Gestos",
+            pres_intro:"Presentación personal",
+            short_title:"Lo que queda (Cortometraje)",
+            short_dir:"Dirigido por Santiago Ambriz.",
+            short_more:"Explorar más cortometrajes",
+            gal_title:"Galería",
+            gal_desc:"Algunas imágenes seleccionadas de mis trabajos y sesiones fotográficas.",
+            gal_more:"Ver más fotos",
+            cv_title:"Currículum",
+            cv_desc:"Descarga mi CV completo para conocer mi formación y experiencia.",
+            cv_btn:"Descargar CV (PDF)",
+            social_title:"Sígueme",
+            social_desc:"Conecta conmigo en mis redes sociales para ver más contenido y novedades.",
+            contact_title:"Contacto",
+            contact_desc:"Estoy disponible para proyectos de actuación, dirección y colaboración artística.",
+            contact_phone_label:"Teléfono:",
+            contact_mail_label:"Correo:",
+            contact_loc:"Ubicación: Ixtapa-Zihuatanejo, Guerrero, México.",
+            rights:"Todos los derechos reservados.",
+            st_title:"Enviar solicitud de self-tape",
+            st_sub:"Elige el medio que prefieras:",
+            st_email:"Correo electrónico",
+            st_whats:"WhatsApp",
+            st_cancel:"Cancelar"
+          },
+          en: {
+            brand:"Obed Bel",
+            nav_home:"Home", nav_about:"About", nav_reel:"Showreel", nav_presentations:"Presentations",
+            nav_shortfilm:"Short Film", nav_gallery:"Gallery", nav_resume:"Résumé", nav_contact:"Contact",
+            hero_name:"Obed Bel",
+            hero_line:"Actor committed to delivering high-level performances that elevate any film project.",
+            cta_reel:"Watch Showreel", cta_contact:"Contact Me",
+            about_title:"About",
+            about_p1:"I am a versatile actor in action and drama with experience in martial arts and physical training, able to execute demanding scenes with realism and safety. With an intensive, fully-fledged character approach, I build each role from its emotional core to its physical expression, achieving truthful performances even with limited material. My knowledge of directing, camera and lighting gives me a comprehensive view of production, adding creativity, commitment and problem-solving on any set.",
+            about_p2:"More than a performer, I am a collaborator who understands that every project requires artistic quality as well as commercial viability. I am committed to delivering solid work, discipline and a professional attitude—making my presence a tangible and profitable asset to any production.",
+            hi_skills_h:"Skills",
+            hi_skills_p:"Stage combat (armed and unarmed), safe on-camera acrobatics, fight choreography and timing; basic driving and swimming.",
+            hi_set_h:"Set & Camera",
+            hi_set_p:"Applied film language: focal-length–perspective relationship, axis/eye-line continuity; reading tone and pace; collaborating with direction, cinematography and lighting to preserve composition and light.",
+            hi_avail_h:"Availability",
+            hi_avail_p:"Ixtapa–Zihuatanejo. Travel for confirmed projects or those with high likelihood of confirmation.",
+            reel_title:"Showreel 2025",
+            reel_desc:"Enjoy my most recent reel and get a sense of my range.",
+            st_line:"Would you like to see me become <strong>your</strong> character?",
+            st_btn:"Request self-tape",
+            pres_title:"Presentation Videos",
+            pres_desc:"These videos show my on-camera presence and expressive range.",
+            pres_hands:"Hands & Gestures",
+            pres_intro:"Personal Introduction",
+            short_title:"What Remains (Short Film)",
+            short_dir:"Directed by Santiago Ambriz.",
+            short_more:"Explore more short films",
+            gal_title:"Gallery",
+            gal_desc:"A selection of images from my work and photo sessions.",
+            gal_more:"See more photos",
+            cv_title:"Résumé",
+            cv_desc:"Download my full CV to see my training and experience.",
+            cv_btn:"Download CV (PDF)",
+            social_title:"Follow",
+            social_desc:"Connect with me on social media for more content and updates.",
+            contact_title:"Contact",
+            contact_desc:"Available for acting, directing and artistic collaborations.",
+            contact_phone_label:"Phone:",
+            contact_mail_label:"Email:",
+            contact_loc:"Location: Ixtapa–Zihuatanejo, Guerrero, Mexico.",
+            rights:"All rights reserved.",
+            st_title:"Send a self-tape request",
+            st_sub:"Choose your preferred method:",
+            st_email:"Email",
+            st_whats:"WhatsApp",
+            st_cancel:"Cancel"
+          }
+        };
+
+        const toggle = document.getElementById('langToggle');
+        let lang = 'es';
+
+        function applyLang(l){
+          document.documentElement.lang = l === 'en' ? 'en' : 'es';
+          document.querySelectorAll('[data-i18n]').forEach(el=>{
+            const key = el.getAttribute('data-i18n');
+            if(t[l][key] !== undefined){
+              el.innerHTML = t[l][key];
+            }
+          });
+          toggle.textContent = l === 'en' ? 'ES' : 'EN';
+        }
+
+        toggle.addEventListener('click', ()=>{
+          lang = (lang === 'es') ? 'en' : 'es';
+          applyLang(lang);
+        });
+
+        // Inicial
+        applyLang('es');
+      })();
+    </script>
+    </body>
+</html>
